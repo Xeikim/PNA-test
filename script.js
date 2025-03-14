@@ -110,3 +110,56 @@ fetchForm.addEventListener("submit", (event) => {
 //         }
 //     );
 //   request.then((s) => s.text().then(console.log));
+
+// 视频播放器控制逻辑
+// 获取视频相关元素
+const video = document.getElementById('video');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const progressBar = document.getElementById('progressBar');
+const currentTimeSpan = document.getElementById('currentTime');
+const durationSpan = document.getElementById('duration');
+
+// 格式化时间函数
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    seconds = Math.floor(seconds % 60);
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+// 播放/暂停控制
+playPauseBtn.addEventListener('click', () => {
+    if (video.paused) {
+        video.play();
+        playPauseBtn.textContent = '暂停';
+    } else {
+        video.pause();
+        playPauseBtn.textContent = '播放';
+    }
+});
+
+// 视频加载完成后设置进度条最大值
+video.addEventListener('loadedmetadata', () => {
+    progressBar.max = Math.floor(video.duration);
+    durationSpan.textContent = formatTime(video.duration);
+});
+
+// 更新进度条和时间显示
+video.addEventListener('timeupdate', () => {
+    progressBar.value = Math.floor(video.currentTime);
+    currentTimeSpan.textContent = formatTime(video.currentTime);
+});
+
+// 进度条拖动控制
+progressBar.addEventListener('input', () => {
+    video.currentTime = progressBar.value;
+});
+
+// 视频结束时重置按钮状态
+video.addEventListener('ended', () => {
+    playPauseBtn.textContent = '播放';
+});
+
+// 处理视频错误
+video.addEventListener('error', () => {
+    console.error('视频加载错误:', video.error);
+});
