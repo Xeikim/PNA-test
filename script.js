@@ -78,9 +78,9 @@ fetchForm.addEventListener("submit", (event) => {
       method: fetchMethod.value,
       mode: fetchCors.checked ? "cors" : "no-cors",
     };
-  if (fetchTargetAddressSpace.value != "n/a") {
-    fetchOptions["targetAddressSpace"] = fetchTargetAddressSpace.value;
-  }
+//   if (fetchTargetAddressSpace.value != "n/a") {
+//     fetchOptions["targetAddressSpace"] = fetchTargetAddressSpace.value;
+//   }
   if (fetchMethod.value == "POST") {
     fetchOptions["body"] = fetchBody.value;
   }
