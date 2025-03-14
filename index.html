@@ -1,0 +1,78 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<!--     <meta http-equiv="origin-trial" content="ArVQFLoRW65pvwhCPkJCYYyObeF5xKrQQ4eu3cgH3NK5rPy2PEjsGHpr2pTOUaQA/m92da7YMNHLLTelHL6q2AoAAACheyJvcmlnaW4iOiJodHRwczovL3ByaXZhdGUtbmV0d29yay1hY2Nlc3MtcGVybWlzc2lvbi10ZXN0LmdsaXRjaC5tZTo0NDMiLCJmZWF0dXJlIjoiUHJpdmF0ZU5ldHdvcmtBY2Nlc3NQZXJtaXNzaW9uUHJvbXB0IiwiZXhwaXJ5IjoxNzE0NTIxNTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZX0="> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="CORS-RFC1918 testbed" />
+
+    <title>Private Network Access testing</title>
+
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://glitch.com/edit/favicon-app.ico"
+      type="image/x-icon"
+    />
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Private Network Access testing</h1>
+    </header>
+
+    <main>
+      <form id="fetch-form">
+        <label for="fetch-url">URL to fetch:</label>
+        <input
+          type="url"
+          id="fetch-input-box"
+          name="fetch-url"
+          value="http://localhost"
+        />
+<!--         <label for="fetch-method">Use Service Worker:</label>
+        <input 
+           type="checkbox"
+           id="service-worker"
+           name="service-worker"
+           value="use service worker"
+        /> -->
+        <label for="fetch-method">Request method:</label>
+        <select name="fetch-method" id="fetch-method">
+          <option value="get">GET</option>
+          <option value="put">PUT</option>
+          <option value="put">POST</option>
+        </select>
+        <label for="fetch-cors">CORS?</label>
+        <input type="checkbox" name="fetch-cors" id="fetch-cors" />
+        <label for="fetch-target-address-space">TargetAddressSpace?</label>
+        <select
+          name="fetch-target-address-space"
+          id="fetch-target-address-space"
+        >
+          <option value="local">local</option>
+          <option value="private">private</option>
+          <option value="public">public</option>
+          <option value="unknown">unknown</option>
+          <option value="n/a">n/a</option>
+        </select>
+        <label for="fetch-headers">Fetch headers (JSON):</label>
+        <input type="text" name="fetch-headers" id="fetch-headers"/>
+        <label for="fetch-body">Fetch body:</label>
+        <input type="text" name="fetch-body" id="fetch-body"/>
+        <button>Fetch!</button>
+      </form>
+      <div id="fetch-results">
+        Fetch results:
+        <ul id="fetch-results-list"></ul>
+      </div>
+    </main>
+  </body>
+</html>
